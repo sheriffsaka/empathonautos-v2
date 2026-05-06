@@ -6,7 +6,7 @@ const PreOrder = () => {
       <div className="relative pt-48 pb-32 px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1579033461380-adb47c3eb938?q=80&w=2000&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2000&auto=format&fit=crop" 
             className="w-full h-full object-cover grayscale-0 opacity-60 brightness-75 transition-all duration-1000"
             alt="Pre-Order Banner"
           />

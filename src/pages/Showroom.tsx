@@ -4,13 +4,13 @@ const Showroom = () => {
   return (
     <div className="bg-black text-white">
       <div className="relative pt-48 pb-32 px-6 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 text-white">
           <img 
             src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2000&auto=format&fit=crop" 
-            className="w-full h-full object-cover grayscale opacity-40 brightness-50"
+            className="w-full h-full object-cover grayscale-0 opacity-70 brightness-90 shadow-2xl transition-all duration-1000"
             alt="Showroom Banner"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-80" />
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">

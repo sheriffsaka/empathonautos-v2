@@ -1,9 +1,35 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, ShieldCheck, Truck, Globe } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 export const Hero = () => {
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const slides = [
+    {
+      image: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=2000&auto=format&fit=crop",
+      title: "Performance Excellence",
+      subtitle: "Porsche 911 GT3"
+    },
+    {
+      image: "https://res.cloudinary.com/di7okmjsx/image/upload/v1778084831/G63_AMG_wo0tqd.jpg",
+      title: "Luxury Unbound",
+      subtitle: "Cullinan Black Badge"
+    },
+    {
+      image: "https://res.cloudinary.com/di7okmjsx/image/upload/v1778084831/Cullinan_Black_Badge_xzint9.jpg",
+      title: "Tactical Presence",
+      subtitle: "G63 AMG Stealth"
+    }
+  ];
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative h-[90vh] flex items-center overflow-hidden bg-black text-white">
       {/* Background visual element */}
@@ -58,22 +84,43 @@ export const Hero = () => {
           </div>
         </motion.div>
         
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
-          className="relative hidden lg:block"
-        >
-          <img 
-            src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=2000&auto=format&fit=crop" 
-            alt="Hero Car" 
-            className="w-full h-auto object-cover grayscale brightness-110 hover:grayscale-0 transition-all duration-1000"
-          />
-          <div className="absolute -bottom-10 -left-10 bg-black p-8 border border-white/10 shadow-2xl max-w-xs">
+        <div className="relative hidden lg:block h-[500px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.1 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0"
+            >
+              <img 
+                src={slides[currentSlide].image}
+                alt={slides[currentSlide].subtitle}
+                className="w-full h-full object-cover grayscale-0 brightness-110 shadow-2xl"
+              />
+              <div className="absolute top-6 right-6 bg-black/60 backdrop-blur-md px-6 py-4 border border-white/10">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-1">{slides[currentSlide].title}</p>
+                <p className="text-sm font-black italic uppercase tracking-tighter">{slides[currentSlide].subtitle}</p>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="absolute -bottom-10 -left-10 bg-black p-8 border border-white/10 shadow-2xl max-w-xs z-20">
             <p className="font-bold italic text-2xl mb-2 text-white">"Highest standards of verification."</p>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-white/30">Sheriffdeen A. — Founder</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-white/30">Empathon Autos. — Founder</p>
           </div>
-        </motion.div>
+
+          <div className="absolute -bottom-8 right-0 flex gap-2">
+            {slides.map((_, i) => (
+              <button 
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                className={`h-1 transition-all duration-500 ${currentSlide === i ? 'w-12 bg-white' : 'w-4 bg-white/20'}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

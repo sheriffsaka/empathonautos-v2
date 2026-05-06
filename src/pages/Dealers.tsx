@@ -7,10 +7,10 @@ const Dealers = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2000&auto=format&fit=crop" 
-            className="w-full h-full object-cover grayscale opacity-20 brightness-50"
+            className="w-full h-full object-cover grayscale-0 opacity-50 brightness-75 transition-all duration-1000"
             alt="Dealers Banner"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-90" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">

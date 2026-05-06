@@ -1,4 +1,4 @@
-import { Car as CarIcon, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 export const Footer = () => {
@@ -7,8 +7,11 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-20">
         <div className="col-span-1 md:col-span-1">
           <NavLink to="/" className="flex items-center gap-2 mb-6">
-            <CarIcon className="w-8 h-8 text-white" />
-            <span className="text-xl font-bold tracking-tighter uppercase">Empathon</span>
+            <img 
+              src="https://res.cloudinary.com/di7okmjsx/image/upload/v1778084269/emplogo_wrxa0g.png" 
+              alt="Empathon Logo"
+              className="h-10 w-auto object-contain brightness-0 invert"
+            />
           </NavLink>
           <p className="text-gray-400 text-sm leading-relaxed mb-8">
             The leading Nigerian automobile platform providing transparent car sourcing, sales, and corporate fleet solutions. Truly professional.

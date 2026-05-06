@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Menu, X, Car as CarIcon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../../lib/utils';
 
@@ -33,11 +33,11 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <NavLink to="/" className="flex items-center gap-2 group">
-          <CarIcon className="w-8 h-8 text-white" />
-          <div className="flex flex-col gap-0 leading-[0.8]">
-            <span className="text-xl font-black tracking-tighter uppercase text-white italic">Empathon</span>
-            <span className="text-[8px] font-black tracking-[0.4em] uppercase text-white/30 ml-0.5">Autos</span>
-          </div>
+          <img 
+            src="https://res.cloudinary.com/di7okmjsx/image/upload/v1778084269/emplogo_wrxa0g.png" 
+            alt="Empathon Logo"
+            className="h-10 md:h-12 w-auto object-contain brightness-0 invert"
+          />
         </NavLink>
 
         {/* Desktop Nav */}

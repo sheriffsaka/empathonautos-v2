@@ -10,6 +10,7 @@ export const IndividualShowroom = () => {
   const [loading, setLoading] = React.useState(true);
   const [activeBrand, setActiveBrand] = React.useState<string>('All');
   const [activeType, setActiveType] = React.useState<string>('All');
+  const [maxPrice, setMaxPrice] = React.useState<number>(100000000);
 
   React.useEffect(() => {
     carService.getCars().then(data => {
@@ -23,7 +24,8 @@ export const IndividualShowroom = () => {
 
   const filteredCars = cars.filter(c => 
     (activeBrand === 'All' || c.brand === activeBrand) &&
-    (activeType === 'All' || c.type === activeType)
+    (activeType === 'All' || c.type === activeType) &&
+    (c.price <= maxPrice)
   );
 
   return (
@@ -36,6 +38,26 @@ export const IndividualShowroom = () => {
               <div className="flex items-center gap-2 mb-10 pb-4 border-b border-white/10">
                 <Filter className="w-4 h-4 text-white/40" />
                 <span className="text-xs font-bold uppercase tracking-widest text-white">Filter Discovery</span>
+              </div>
+
+              <div className="mb-12">
+                <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-6 italic">Price Threshold</h4>
+                <div className="space-y-4">
+                  <input 
+                    type="range" 
+                    min="10000000" 
+                    max="100000000" 
+                    step="5000000"
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(parseInt(e.target.value))}
+                    className="w-full accent-white cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-white/40">
+                    <span>10M</span>
+                    <span className="text-white">{formatPrice(maxPrice)}</span>
+                    <span>100M</span>
+                  </div>
+                </div>
               </div>
 
               <div className="mb-12">

@@ -1,4 +1,5 @@
 import { CorporateModule } from '../components/showroom/CorporateModule';
+import { IndividualShowroom } from '../components/showroom/IndividualShowroom';
 
 const Corporate = () => {
   return (
@@ -19,6 +20,14 @@ const Corporate = () => {
         </div>
       </div>
       <CorporateModule />
+      
+      <div className="pt-20 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 mb-4 italic">Fleet Gallery</h4>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-[0.9] mb-12">Available Assets</h2>
+        </div>
+        <IndividualShowroom />
+      </div>
     </div>
   );
 };

@@ -21,7 +21,7 @@ const audiences = [
       },
       {
         name: 'Land Rover Defender 110',
-        image: 'https://images.unsplash.com/photo-1606016159991-fed4429979ad?auto=format&fit=crop&q=80&w=1000',
+        image: 'https://res.cloudinary.com/di7okmjsx/image/upload/v1778092867/Land_Rover_Defender_110_izjf7m.jpg',
         year: '2023',
         status: 'Available'
       },

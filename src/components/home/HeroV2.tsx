@@ -71,7 +71,7 @@ export const HeroV2 = () => {
             <h4 className="text-[10px] font-black uppercase tracking-[0.5em] text-white/50 mb-6 italic underline underline-offset-8 decoration-white/20">
               {slides[current].title}
             </h4>
-            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85] italic mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85] italic mb-8">
               {slides[current].subtitle.split(' ').map((word, i) => (
                 <span key={i} className="block">{word}</span>
               ))}

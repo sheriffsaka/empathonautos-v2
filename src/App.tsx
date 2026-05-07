@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/common/Layout';
 import Home from './pages/Home';
+import HomeV2 from './pages/HomeV2';
 import Showroom from './pages/Showroom';
 import Corporate from './pages/Corporate';
 import Dealers from './pages/Dealers';
@@ -13,6 +14,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="v2" element={<HomeV2 />} />
           <Route path="showroom" element={<Showroom />} />
           <Route path="corporate" element={<Corporate />} />
           <Route path="dealers" element={<Dealers />} />

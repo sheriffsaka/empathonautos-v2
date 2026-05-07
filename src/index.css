@@ -42,3 +42,13 @@
     @apply w-full bg-transparent border-b border-white/10 py-4 text-sm font-medium focus:outline-none focus:border-white transition-colors placeholder:text-white/20;
   }
 }
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

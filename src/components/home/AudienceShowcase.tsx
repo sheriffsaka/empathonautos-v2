@@ -99,30 +99,32 @@ export const AudienceShowcase = () => {
   return (
     <section className="py-40 bg-black text-white border-b border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-24">
+        <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-12 mb-24">
           <div className="max-w-xl">
             <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30 mb-6 italic underline underline-offset-8">Target Sectors</h4>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85] italic mb-8">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.85] italic mb-8">
               Engineered <br /> for Impact.
             </h2>
           </div>
           
-          <div className="flex flex-wrap gap-4 bg-neutral-950 p-2 border border-white/5">
-            {audiences.map((audience) => (
-              <button
-                key={audience.id}
-                onClick={() => setActiveTab(audience.id)}
-                className={cn(
-                  "px-8 py-4 text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-3",
-                  activeTab === audience.id 
-                    ? "bg-white text-black" 
-                    : "text-white/40 hover:text-white"
-                )}
-              >
-                {audience.icon}
-                {audience.title}
-              </button>
-            ))}
+          <div className="flex overflow-x-auto lg:overflow-x-visible pb-4 lg:pb-0 gap-4 bg-neutral-950 p-2 border border-white/5 scrollbar-hide">
+            <div className="flex gap-2 min-w-max">
+              {audiences.map((audience) => (
+                <button
+                  key={audience.id}
+                  onClick={() => setActiveTab(audience.id)}
+                  className={cn(
+                    "px-6 lg:px-8 py-3 lg:py-4 text-[10px] font-black uppercase tracking-widest transition-all flex items-center gap-3",
+                    activeTab === audience.id 
+                      ? "bg-white text-black" 
+                      : "text-white/40 hover:text-white"
+                  )}
+                >
+                  {audience.icon}
+                  {audience.title}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

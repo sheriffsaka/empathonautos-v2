@@ -31,7 +31,7 @@ export const CorporateModule = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
           <div className="lg:col-span-5">
             <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 mb-4 italic">Enterprise Solutions</h4>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase mb-12 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight uppercase mb-12 leading-tight">
               Optimized Fleet Management for your Sector
             </h2>
             
@@ -69,7 +69,7 @@ export const CorporateModule = () => {
               key={activeSector}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-neutral-950 p-12 h-full flex flex-col border border-white/5"
+              className="bg-neutral-950 p-6 sm:p-12 h-full flex flex-col border border-white/5"
             >
               <h3 className="text-3xl font-black uppercase tracking-tighter mb-6 italic">{currentSector?.name} Benefits</h3>
               <p className="text-white/50 text-lg leading-relaxed mb-12">

@@ -66,7 +66,7 @@ export const PreOrderForm = () => {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
         <div className="py-10">
           <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 mb-6 italic underline underline-offset-8">Global Procurement</h4>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-10 leading-[0.9]">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter uppercase mb-10 leading-[0.9]">
             Exclusivity <br /> On Demand.
           </h2>
           <p className="text-white/50 text-xl leading-relaxed mb-16 max-w-lg">
@@ -95,7 +95,7 @@ export const PreOrderForm = () => {
           </div>
         </div>
 
-        <div className="bg-neutral-950 p-12 lg:p-20 border border-white/10 relative overflow-hidden">
+        <div className="bg-neutral-950 p-6 sm:p-12 lg:p-20 border border-white/10 relative overflow-hidden">
           <div className="absolute top-0 right-0 p-20 opacity-[0.01] pointer-events-none">
             <Send className="w-96 h-96 -rotate-12" />
           </div>

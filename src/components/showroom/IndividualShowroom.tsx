@@ -143,7 +143,7 @@ export const IndividualShowroom = () => {
                       </div>
                       <p className="text-xl font-bold italic">{formatPrice(car.price)}</p>
                     </div>
-                    <div className="grid grid-cols-3 gap-8 border-y border-white/5 py-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-8 border-y border-white/5 py-8">
                       <div className="text-[9px] font-black uppercase tracking-widest text-white/20 italic">
                         <span className="block text-white mb-2 font-black text-xs not-italic">{car.specifications.year}</span>
                         Model Yr
@@ -152,7 +152,7 @@ export const IndividualShowroom = () => {
                         <span className="block text-white mb-2 font-black text-xs not-italic">{car.transmission}</span>
                         Shift
                       </div>
-                      <div className="text-[9px] font-black uppercase tracking-widest text-white/20 italic">
+                      <div className="text-[9px] font-black uppercase tracking-widest text-white/20 italic col-span-2 sm:col-span-1">
                         <span className="block text-white mb-2 font-black text-xs not-italic">{car.specifications.fuelType}</span>
                         Engine
                       </div>

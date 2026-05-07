@@ -46,7 +46,7 @@ export const Hero = () => {
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">The Gold Standard in Nigeria</span>
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-black tracking-[calc(-0.05em)] mb-8 leading-[0.85] uppercase italic">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-[calc(-0.05em)] mb-8 leading-[0.85] uppercase italic">
             Find the <br /> Right Car <br />
             <span className="text-white/10 not-italic">—</span> For You.
           </h1>
@@ -137,11 +137,11 @@ export const TrustStrip = () => {
   return (
     <div className="bg-neutral-950 text-white py-10 overflow-hidden border-y border-white/5">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-wrap items-center justify-between gap-8 md:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 items-center justify-between gap-8 md:gap-12">
           {items.map((item, idx) => (
-            <div key={idx} className="flex items-center gap-3 group">
+            <div key={idx} className="flex flex-col md:flex-row items-center md:items-start gap-3 group text-center md:text-left">
               <div className="text-white/30 group-hover:text-white transition-colors">{item.icon}</div>
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">{item.text}</span>
+              <span className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em]">{item.text}</span>
             </div>
           ))}
         </div>

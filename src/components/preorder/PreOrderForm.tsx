@@ -95,7 +95,7 @@ export const PreOrderForm = () => {
           </div>
         </div>
 
-        <div className="bg-neutral-950 p-6 sm:p-12 lg:p-20 border border-white/10 relative overflow-hidden">
+        <div className="bg-neutral-900 p-6 sm:p-12 lg:p-20 border border-white/20 relative overflow-hidden shadow-2xl shadow-white/5">
           <div className="absolute top-0 right-0 p-20 opacity-[0.01] pointer-events-none">
             <Send className="w-96 h-96 -rotate-12" />
           </div>
@@ -104,28 +104,28 @@ export const PreOrderForm = () => {
             <div className="space-y-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-white/20 italic">Primary Contact</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-white/40 italic">Primary Contact</label>
                   <input required name="name" type="text" placeholder="SHERIFFDEEN A." className="input-noir italic" />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-white/20 italic">Direct Line</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-white/40 italic">Direct Line</label>
                   <input required name="phone" type="text" placeholder="+234 ..." className="input-noir italic" />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-white/20 italic">Vehicle Brand</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-white/40 italic">Vehicle Brand</label>
                   <input required name="brand" type="text" placeholder="E.G. ROLLS-ROYCE" className="input-noir placeholder:text-white/5" />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-white/20 italic">Model / Package</label>
+                  <label className="text-[10px] font-black uppercase tracking-widest text-white/40 italic">Model / Package</label>
                   <input required name="model" type="text" placeholder="E.G. CULLINAN BLACK BADGE" className="input-noir placeholder:text-white/5" />
                 </div>
               </div>
 
               <div className="space-y-3">
-                <label className="text-[10px] font-black uppercase tracking-widest text-white/20 italic">Acquisition Notes</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-white/40 italic">Acquisition Notes</label>
                 <textarea name="notes" rows={4} placeholder="SPECIFIC TRIM, INTERIOR COLOR, OR ARMORED REQUIREMENTS..." className="input-noir placeholder:text-white/5 resize-none h-32" />
               </div>
             </div>
@@ -136,7 +136,7 @@ export const PreOrderForm = () => {
               className="luxury-button w-full flex items-center justify-center gap-4 py-8"
             >
               {loading ? 'Transmitting...' : (
-                <>Initiate Sourcing Protocol <Send className="w-5 h-5" /></>
+                <>Submit Pre-Order Details <Send className="w-5 h-5" /></>
               )}
             </button>
           </form>

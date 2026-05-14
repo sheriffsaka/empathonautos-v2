@@ -5,10 +5,13 @@ import { formatPrice } from '../../lib/utils';
 import { Car } from '../../types';
 import { carService } from '../../services/carService';
 import { Link } from 'react-router-dom';
+import { CarDetailModal } from '../common/CarDetailModal';
 
 export const FeaturedCars = () => {
   const [cars, setCars] = React.useState<Car[]>([]);
   const [loading, setLoading] = React.useState(true);
+  const [selectedCar, setSelectedCar] = React.useState<Car | null>(null);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   React.useEffect(() => {
     carService.getFeaturedCars().then(data => {
@@ -16,6 +19,11 @@ export const FeaturedCars = () => {
       setLoading(false);
     });
   }, []);
+
+  const openDossier = (car: Car) => {
+    setSelectedCar(car);
+    setIsModalOpen(true);
+  };
 
   return (
     <section className="py-32 bg-black border-y border-white/5">
@@ -38,7 +46,8 @@ export const FeaturedCars = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden bg-neutral-950 border border-white/5"
+              className="group relative overflow-hidden bg-neutral-950 border border-white/5 cursor-pointer"
+              onClick={() => openDossier(car)}
             >
               <div className="aspect-[16/10] overflow-hidden">
                 <img 
@@ -74,10 +83,20 @@ export const FeaturedCars = () => {
                   Verified Unit
                 </div>
               )}
+
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                 <span className="px-6 py-3 bg-white text-black text-[10px] font-black uppercase tracking-widest">Open Dossier</span>
+              </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <CarDetailModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        car={selectedCar} 
+      />
     </section>
   );
 };

@@ -4,6 +4,7 @@ import { Filter, Search, ChevronDown, Check } from 'lucide-react';
 import { Car } from '../../types';
 import { carService } from '../../services/carService';
 import { formatPrice, cn } from '../../lib/utils';
+import { CarDetailModal } from '../common/CarDetailModal';
 
 export const IndividualShowroom = () => {
   const [cars, setCars] = React.useState<Car[]>([]);
@@ -11,6 +12,9 @@ export const IndividualShowroom = () => {
   const [activeBrand, setActiveBrand] = React.useState<string>('All');
   const [activeType, setActiveType] = React.useState<string>('All');
   const [maxPrice, setMaxPrice] = React.useState<number>(100000000);
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [selectedCar, setSelectedCar] = React.useState<Car | null>(null);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   React.useEffect(() => {
     carService.getCars().then(data => {
@@ -25,8 +29,14 @@ export const IndividualShowroom = () => {
   const filteredCars = cars.filter(c => 
     (activeBrand === 'All' || c.brand === activeBrand) &&
     (activeType === 'All' || c.type === activeType) &&
-    (c.price <= maxPrice)
+    (c.price <= maxPrice) &&
+    (c.name.toLowerCase().includes(searchTerm.toLowerCase()) || c.brand.toLowerCase().includes(searchTerm.toLowerCase()))
   );
+
+  const openDossier = (car: Car) => {
+    setSelectedCar(car);
+    setIsModalOpen(true);
+  };
 
   return (
     <section className="py-20 bg-black text-white">
@@ -103,12 +113,22 @@ export const IndividualShowroom = () => {
           {/* Grid */}
           <div className="flex-1">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
-              <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">
-                Inventory Units: <span className="text-white">{filteredCars.length}</span>
-              </p>
+              <div className="relative w-full md:w-96">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                <input 
+                  type="text" 
+                  placeholder="SEARCH SPECIFIC UNIT..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full bg-neutral-950 border border-white/10 px-12 py-4 text-[10px] font-bold uppercase tracking-widest focus:outline-none focus:border-white transition-all placeholder:text-white/10"
+                />
+              </div>
               <div className="flex items-center gap-4">
-                <button className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border border-white/10 px-6 py-3 hover:bg-white hover:text-black transition-all active:scale-95">
-                  Sort By: Priority <ChevronDown className="w-3 h-3" />
+                <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em] whitespace-nowrap">
+                  Units: <span className="text-white">{filteredCars.length}</span>
+                </p>
+                <button className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest border border-white/10 px-6 py-4 hover:bg-white hover:text-black transition-all active:scale-95">
+                  Priority <ChevronDown className="w-3 h-3" />
                 </button>
               </div>
             </div>
@@ -157,7 +177,10 @@ export const IndividualShowroom = () => {
                         Engine
                       </div>
                     </div>
-                    <button className="luxury-outline-button w-full mt-10">
+                    <button 
+                      onClick={() => openDossier(car)}
+                      className="luxury-outline-button w-full mt-10"
+                    >
                       View Dossier
                     </button>
                   </div>
@@ -167,6 +190,13 @@ export const IndividualShowroom = () => {
           </div>
         </div>
       </div>
+
+      <CarDetailModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        car={selectedCar} 
+      />
     </section>
   );
 };
+

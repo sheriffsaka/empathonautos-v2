@@ -1,16 +1,30 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Package, Truck, ArrowRight, BarChart3, ShieldCheck } from 'lucide-react';
+import { Package, Truck, ArrowRight, BarChart3, ShieldCheck, Search } from 'lucide-react';
 import { carService } from '../../services/carService';
 import { DealerInventory } from '../../types';
 import { cn } from '../../lib/utils';
+import { CarDetailModal } from '../common/CarDetailModal';
 
 export const DealerModule = () => {
   const [inventory, setInventory] = React.useState<DealerInventory[]>([]);
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [selectedItem, setSelectedItem] = React.useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   React.useEffect(() => {
     carService.getDealerInventory().then(setInventory);
   }, []);
+
+  const filteredInventory = inventory.filter(item => 
+    item.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    item.brand.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const openDossier = (item: any) => {
+    setSelectedItem(item);
+    setIsModalOpen(true);
+  };
 
   return (
     <section className="py-32 bg-black text-white">
@@ -25,27 +39,40 @@ export const DealerModule = () => {
               We empower Nigerian car dealers with bulk import solutions and logistics consolidation.
             </p>
           </div>
-          <div className="flex gap-4">
-            <div className="text-center px-12 border-r border-white/10">
-              <p className="text-4xl font-black italic">500+</p>
-              <p className="text-[9px] font-black uppercase tracking-widest text-white/20 mt-2">Cars Supplied</p>
+          <div className="flex flex-col items-end gap-12">
+            <div className="flex gap-4">
+              <div className="text-center px-12 border-r border-white/10">
+                <p className="text-4xl font-black italic">500+</p>
+                <p className="text-[9px] font-black uppercase tracking-widest text-white/20 mt-2">Cars Supplied</p>
+              </div>
+              <div className="text-center px-12">
+                <p className="text-4xl font-black italic">45</p>
+                <p className="text-[9px] font-black uppercase tracking-widest text-white/20 mt-2">Partner Dealers</p>
+              </div>
             </div>
-            <div className="text-center px-12">
-              <p className="text-4xl font-black italic">45</p>
-              <p className="text-[9px] font-black uppercase tracking-widest text-white/20 mt-2">Partner Dealers</p>
+            <div className="relative w-full">
+              <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-white/30" />
+              <input 
+                type="text" 
+                placeholder="SEARCH BULK LOTS..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full bg-neutral-950 border border-white/10 pl-16 pr-8 py-5 text-[10px] font-black uppercase tracking-[0.3em] focus:outline-none focus:border-white transition-all placeholder:text-white/10"
+              />
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {inventory.map((item, idx) => (
+          {filteredInventory.map((item, idx) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="group bg-neutral-950 overflow-hidden flex flex-col md:flex-row h-full border border-white/5 hover:border-white/20 transition-all duration-700"
+              className="group bg-neutral-950 overflow-hidden flex flex-col md:flex-row h-full border border-white/5 hover:border-white/20 transition-all duration-700 cursor-pointer"
+              onClick={() => openDossier(item)}
             >
               <div className="w-full md:w-1/2 overflow-hidden">
                 <img 
@@ -106,6 +133,16 @@ export const DealerModule = () => {
           </div>
         </div>
       </div>
+
+      <CarDetailModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        car={{
+          ...selectedItem,
+          price: selectedItem?.price_range
+        }} 
+      />
     </section>
   );
 };
+

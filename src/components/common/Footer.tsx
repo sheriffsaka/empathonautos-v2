@@ -27,6 +27,7 @@ export const Footer = () => {
         <div>
           <h4 className="font-bold text-white uppercase tracking-widest text-xs mb-8">Navigation</h4>
           <ul className="space-y-4 text-sm text-gray-400">
+            <li><NavLink to="/about" className="hover:text-white transition-colors">About Us</NavLink></li>
             <li><NavLink to="/showroom" className="hover:text-white transition-colors">Showroom</NavLink></li>
             <li><NavLink to="/corporate" className="hover:text-white transition-colors">Corporate Fleet</NavLink></li>
             <li><NavLink to="/dealers" className="hover:text-white transition-colors">Dealer Inventory</NavLink></li>

@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import HomeV2 from './pages/HomeV2';
 import HomeV3 from './pages/HomeV3';
 import HomeV4 from './pages/HomeV4';
+import About from './pages/About';
 import Showroom from './pages/Showroom';
 import Corporate from './pages/Corporate';
 import Dealers from './pages/Dealers';
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="v2" element={<HomeV2 />} />
           <Route path="v3" element={<HomeV3 />} />
           <Route path="v4" element={<HomeV4 />} />
+          <Route path="about" element={<About />} />
           <Route path="showroom" element={<Showroom />} />
           <Route path="corporate" element={<Corporate />} />
           <Route path="dealers" element={<Dealers />} />

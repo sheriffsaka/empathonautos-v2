@@ -29,17 +29,23 @@ export const DealerModule = () => {
   return (
     <section className="py-32 bg-black text-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20 pb-12 border-b border-white/5">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-20 pb-12 border-b border-white/5">
           <div className="max-w-2xl">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 mb-4 italic">B2B Distribution Channel</h4>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-6 leading-[0.9]">
-              Dealer Gateway
+            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#70d1ff] mb-6 italic border-l-2 border-[#70d1ff] pl-4">Liquidity Solutions</h4>
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-10 leading-[0.9]">
+              Dealer Deals <br /> & Liquidations.
             </h2>
-            <p className="text-white/40 text-xl leading-relaxed max-w-lg">
-              We empower Nigerian car dealers with bulk import solutions and logistics consolidation.
-            </p>
+            <div className="bg-neutral-900 p-8 border border-white/10 space-y-6">
+              <p className="text-white/60 text-lg leading-relaxed font-medium">
+                Empathon Autos provides a high-velocity marketplace for individual and corporate sellers. Whether you're looking to upgrade or require an immediate <span className="text-white font-black italic">Distress Sale</span>, our network ensures the fastest turnaround in the country.
+              </p>
+              <div className="flex items-center gap-6">
+                 <button className="text-[9px] font-black uppercase tracking-widest bg-white text-black px-8 py-4 flex items-center gap-3">Sell Your Vehicle <ArrowRight className="w-4 h-4" /></button>
+                 <span className="text-[8px] font-black uppercase tracking-[0.2em] text-white/20 italic">Global Audience Access</span>
+              </div>
+            </div>
           </div>
-          <div className="flex flex-col items-end gap-12">
+          <div className="flex flex-col items-end gap-12 w-full lg:w-auto">
             <div className="flex gap-4">
               <div className="text-center px-12 border-r border-white/10">
                 <p className="text-4xl font-black italic">500+</p>

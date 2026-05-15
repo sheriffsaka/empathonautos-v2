@@ -1,11 +1,13 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Car as CarIcon, DollarSign, Calendar, MessageSquare, CheckCircle, ShieldCheck } from 'lucide-react';
 import { carService } from '../../services/carService';
+import { cn } from '../../lib/utils';
 
 export const PreOrderForm = () => {
-  const [submitted, setSubmitted] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [useFinancing, setUseFinancing] = useState(false);
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -127,6 +129,54 @@ export const PreOrderForm = () => {
               <div className="space-y-3">
                 <label className="text-[10px] font-black uppercase tracking-widest text-white/40 italic">Acquisition Notes</label>
                 <textarea name="notes" rows={4} placeholder="SPECIFIC TRIM, INTERIOR COLOR, OR ARMORED REQUIREMENTS..." className="input-noir placeholder:text-white/5 resize-none h-32" />
+              </div>
+
+              {/* Financing Section */}
+              <div className="pt-10 border-t border-white/5 space-y-8">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#70d1ff] italic">Financial Mode</h4>
+                  <div className="flex bg-black p-1 border border-white/10 rounded-sm">
+                    <button 
+                      type="button"
+                      onClick={() => setUseFinancing(false)}
+                      className={cn("px-6 py-2 text-[8px] font-black uppercase tracking-widest transition-all", !useFinancing ? "bg-white text-black" : "text-white/30")}
+                    >
+                      Cash Outright
+                    </button>
+                    <button 
+                      type="button"
+                      onClick={() => setUseFinancing(true)}
+                      className={cn("px-6 py-2 text-[8px] font-black uppercase tracking-widest transition-all", useFinancing ? "bg-[#70d1ff] text-[#001440]" : "text-white/30")}
+                    >
+                      Financier / Bank
+                    </button>
+                  </div>
+                </div>
+
+                {useFinancing && (
+                  <motion.div 
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-10"
+                  >
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40 italic">Preferred Institution</label>
+                      <select required name="bank" className="input-noir italic bg-neutral-900 border-none w-full appearance-none">
+                        <option value="">SELECT BANK...</option>
+                        <option value="jaiz">JAIZ BANK (NON-INTEREST)</option>
+                        <option value="firstbank">FIRST BANK OF NIGERIA</option>
+                        <option value="gtb">GTCO (GTBANK)</option>
+                        <option value="access">ACCESS BANK</option>
+                        <option value="zenith">ZENITH BANK</option>
+                        <option value="other">OTHER INSTITUTION</option>
+                      </select>
+                    </div>
+                    <div className="space-y-3">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-white/40 italic">Estimated Down Payment %</label>
+                      <input name="downpayment" type="text" placeholder="E.G. 30%" className="input-noir italic" />
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </div>
 
